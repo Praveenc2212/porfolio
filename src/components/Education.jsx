@@ -1,4 +1,5 @@
-import { GraduationCap, CodeSquare, Github, Terminal } from 'lucide-react';
+import { GraduationCap, CodeSquare, Terminal } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 import './Education.css';
 
 const Education = () => {
@@ -11,7 +12,7 @@ const Education = () => {
     },
     {
       platform: 'GitHub',
-      icon: <Github size={24} />,
+      icon: <FaGithub size={24} />,
       details: 'Profile & Repositories',
       link: '#'
     },

@@ -1,4 +1,5 @@
-import { ExternalLink, Github, FolderGit2 } from 'lucide-react';
+import { ExternalLink, FolderGit2 } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 import './Projects.css';
 
 const Projects = () => {
@@ -58,7 +59,7 @@ const Projects = () => {
               <div className="project-header">
                 <FolderGit2 size={32} className="text-gradient" />
                 <div className="project-links">
-                  <a href={project.githubLink} aria-label="GitHub"><Github size={20} /></a>
+                  <a href={project.githubLink} aria-label="GitHub"><FaGithub size={20} /></a>
                   <a href={project.liveLink} aria-label="Live Demo"><ExternalLink size={20} /></a>
                 </div>
               </div>

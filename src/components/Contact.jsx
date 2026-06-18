@@ -1,4 +1,5 @@
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -21,11 +22,11 @@ const Contact = () => {
                 <span>Email Me</span>
               </a>
               <a href="#" className="social-item">
-                <div className="social-icon"><Github size={20} /></div>
+                <div className="social-icon"><FaGithub size={20} /></div>
                 <span>GitHub</span>
               </a>
               <a href="#" className="social-item">
-                <div className="social-icon"><Linkedin size={20} /></div>
+                <div className="social-icon"><FaLinkedin size={20} /></div>
                 <span>LinkedIn</span>
               </a>
             </div>
