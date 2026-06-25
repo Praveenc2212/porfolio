@@ -1,11 +1,17 @@
 import { ArrowRight, Download, Code2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Hero.css';
 
 const Hero = () => {
   return (
     <section id="hero" className="hero-section">
       <div className="container hero-container">
-        <div className="hero-content animate-fade-in">
+        <motion.div 
+          className="hero-content"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="hero-badge">
             <span className="live-indicator"></span>
             Available for work
@@ -15,12 +21,12 @@ const Hero = () => {
             Hi, I'm <span className="text-gradient">Praveen C</span>
           </h1>
           
-          <h2 className="hero-subtitle">
-            Full Stack Developer
+          <h2 className="hero-subtitle" style={{ fontSize: '1.2rem', marginBottom: '1rem', fontWeight: 500 }}>
+            Full Stack Developer <span className="dot" style={{ margin: '0 0.5rem', color: 'var(--accent-color)' }}>|</span> Backend Developer <span className="dot" style={{ margin: '0 0.5rem', color: 'var(--accent-color)' }}>|</span> Software Engineering Student
           </h2>
           
-          <p className="hero-tech">
-            Java <span className="dot">•</span> Spring Boot <span className="dot">•</span> React <span className="dot">•</span> FastAPI
+          <p className="hero-tech" style={{ maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>
+            Seeking Software Engineering internships and full-time opportunities where I can build scalable software systems, contribute to impactful projects, and continuously improve my technical expertise.
           </p>
           
           <div className="hero-buttons">
@@ -31,9 +37,18 @@ const Hero = () => {
               Download Resume <Download size={18} />
             </a>
           </div>
-        </div>
+        </motion.div>
         
-        <div className="hero-visual animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <motion.div 
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -15, 0] }}
+          transition={{ 
+            opacity: { duration: 0.8, delay: 0.2 },
+            scale: { duration: 0.8, delay: 0.2 },
+            y: { repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }
+          }}
+        >
           <div className="glow-sphere"></div>
           <div className="glass-panel illustration-card">
             <div className="card-header">
@@ -51,7 +66,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

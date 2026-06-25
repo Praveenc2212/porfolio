@@ -1,15 +1,32 @@
-import { Trophy, Code2, Award } from 'lucide-react';
+import { Trophy, Code2, Award, Briefcase } from 'lucide-react';
+import { motion } from 'framer-motion';
 import './Experience.css';
 
 const Experience = () => {
   const experiences = [
     {
-      icon: <Code2 size={24} />,
-      title: 'LeetCode Problem Solver',
-      date: '2025',
+      icon: <Briefcase size={24} />,
+      title: 'Haskel AI',
+      role: 'Software Engineering Intern',
+      date: 'June 2025 – August 2025',
       points: [
-        'Solved 260+ coding problems.',
-        'Earned the 100 Days Badge in 2025.'
+        'Developed full-stack web application features.',
+        'Worked with backend REST APIs.',
+        'Built responsive frontend interfaces.',
+        'Used Git and GitHub for version control.',
+        'Participated in debugging and feature development.',
+        'Collaborated with the development team on real-world software projects.'
+      ],
+      skills: ['Java', 'Spring Boot', 'React', 'FastAPI', 'MySQL', 'Git', 'GitHub']
+    },
+    {
+      icon: <Code2 size={24} />,
+      title: 'Competitive Programmer & LeetCode',
+      date: 'Present',
+      points: [
+        'Solved 650+ LeetCode problems.',
+        'Earned the LeetCode 100 Days Badge (2025, 2026) and 50 Days Badge (2026, 2025).',
+        'Passionate Competitive Programmer focusing on algorithms and optimization.'
       ]
     },
     {
@@ -17,20 +34,16 @@ const Experience = () => {
       title: 'Chess Player',
       date: 'Present',
       points: [
-        'District-level Chess Player.',
+        'District Level Chess Player.',
         'Participated in several competitive chess tournaments.'
-      ]
-    },
-    {
-      icon: <Award size={24} />,
-      title: 'ACM Annual Event Participant',
-      date: '2025',
-      points: [
-        'Actively participated in ACM Annual Event 2025.',
-        'Collaborated with peers to solve complex technical challenges.'
       ]
     }
   ];
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <section id="experience" className="experience-section">
@@ -39,7 +52,14 @@ const Experience = () => {
         
         <div className="timeline">
           {experiences.map((exp, idx) => (
-            <div key={idx} className="timeline-item">
+            <motion.div 
+              key={idx} 
+              className="timeline-item"
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+            >
               <div className="timeline-marker">
                 <div className="marker-icon text-gradient">{exp.icon}</div>
               </div>
@@ -48,13 +68,23 @@ const Experience = () => {
                   <h3>{exp.title}</h3>
                   <span className="timeline-date">{exp.date}</span>
                 </div>
+                {exp.role && <div style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontWeight: 500, fontSize: '1.1rem' }}>{exp.role}</div>}
                 <ul className="timeline-points">
                   {exp.points.map((point, pIdx) => (
                     <li key={pIdx}>{point}</li>
                   ))}
                 </ul>
+                {exp.skills && (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem' }}>
+                    {exp.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="skill-tag" style={{ padding: '0.25rem 0.75rem', fontSize: '0.8rem', background: 'rgba(255, 255, 255, 0.05)', border: '1px solid var(--border-color)', borderRadius: '999px', color: 'var(--text-secondary)' }}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

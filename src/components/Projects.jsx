@@ -1,61 +1,72 @@
 import { ExternalLink, FolderGit2 } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import './Projects.css';
 
 const Projects = () => {
   const projects = [
     {
       title: 'Leave Portal System',
-      description: 'A comprehensive role-based leave management system for educational institutions featuring student, staff, tutor, HOD, principal, warden, gate security, and admin modules with automated approval workflows.',
-      techStack: ['React', 'Tailwind CSS', 'Axios', 'Zustand', 'Spring Boot', 'MySQL'],
-      githubLink: '#',
+      description: 'A role-based Leave Management System for Students, Staff, Tutors, HODs, Principal, Wardens, and Admin with authentication, approval workflow, leave tracking, and dashboard.',
+      techStack: ['React', 'Spring Boot', 'MySQL', 'JWT', 'Tailwind CSS'],
+      githubLink: 'https://github.com/Praveenc2212/LeaveForm',
       liveLink: '#'
     },
     {
       title: 'AI Mock Interview System',
-      description: 'An AI-powered platform designed to help students practice technical interviews and improve their communication skills through realistic mock interview sessions.',
-      techStack: ['React', 'AI Integration', 'Node.js'],
+      description: 'An AI-powered interview preparation platform that conducts mock interviews and provides intelligent feedback.',
+      techStack: ['React', 'Spring Boot', 'AI APIs'],
+      githubLink: 'https://github.com/Praveenc2212/ai-mock-interview',
+      liveLink: '#'
+    },
+    {
+      title: 'Blood Bank Locator',
+      description: 'Blood bank management system using Dijkstra\'s Algorithm to locate nearby blood banks efficiently.',
+      techStack: ['Java', 'Servlet', 'JSP', 'JDBC', 'MySQL'],
       githubLink: '#',
       liveLink: '#'
     },
     {
       title: 'Skyra Browser',
-      description: 'A highly secure kiosk-based examination browser developed to conduct online exams safely by preventing unauthorized activities and enforcing strict browser lockdown.',
-      techStack: ['Electron', 'C++', 'System APIs'],
-      githubLink: '#',
-      liveLink: '#'
-    },
-    {
-      title: 'Banking Application',
-      description: 'A secure and robust banking application featuring JWT-based authentication, account management functionalities, and secure transaction tracking.',
-      techStack: ['React', 'Spring Boot', 'JWT', 'MySQL'],
-      githubLink: '#',
-      liveLink: '#'
-    },
-    {
-      title: 'Product & Order Microservices',
-      description: 'Built scalable and independent microservices architecture with isolated databases tailored for efficient product cataloging and order management.',
-      techStack: ['Spring Boot', 'MongoDB', 'REST APIs'],
-      githubLink: '#',
-      liveLink: '#'
-    },
-    {
-      title: 'Blood Bank Locator',
-      description: 'A life-saving web application utilizing Dijkstra\'s algorithm to help users locate nearby blood banks and check real-time blood availability efficiently.',
-      techStack: ['Java Servlets', 'JSP', 'JDBC', 'MySQL'],
-      githubLink: '#',
+      description: 'A secure examination browser designed to restrict unauthorized system access during online examinations.',
+      techStack: ['Electron', 'JavaScript'],
+      githubLink: 'https://github.com/MrCoyote2075/Skyra',
       liveLink: '#'
     }
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
 
   return (
     <section id="projects" className="projects-section">
       <div className="container">
         <h2 className="section-title">Featured Projects</h2>
         
-        <div className="projects-grid">
+        <motion.div 
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card glass-panel">
+            <motion.div 
+              key={idx} 
+              className="project-card glass-panel"
+              variants={itemVariants}
+              whileHover={{ y: -10, scale: 1.02 }}
+            >
               <div className="project-header">
                 <FolderGit2 size={32} className="text-gradient" />
                 <div className="project-links">
@@ -76,9 +87,9 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

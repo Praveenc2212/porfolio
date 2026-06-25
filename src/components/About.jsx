@@ -1,11 +1,16 @@
-import { User, Code, Database, Layout } from 'lucide-react';
+import { User, Code, Database, Layout, Server, Network, Layers, Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
+import profilePic from '../assets/praveen.jpeg';
 import './About.css';
 
 const About = () => {
   const interests = [
-    { icon: <Layout className="text-gradient" />, title: 'Frontend Development' },
-    { icon: <Database className="text-gradient" />, title: 'Backend & DB Design' },
-    { icon: <Code className="text-gradient" />, title: 'Algorithms & OOP' }
+    { icon: <Server color="#3b82f6" />, title: 'Backend Development' },
+    { icon: <Network color="#3b82f6" />, title: 'REST APIs' },
+    { icon: <Layers color="#3b82f6" />, title: 'Microservices' },
+    { icon: <Code color="#3b82f6" />, title: 'Software Engineering' },
+    { icon: <Database color="#3b82f6" />, title: 'System Design' },
+    { icon: <Brain color="#3b82f6" />, title: 'Problem Solving' }
   ];
 
   return (
@@ -13,19 +18,30 @@ const About = () => {
       <div className="container">
         <h2 className="section-title">About Me</h2>
         
-        <div className="about-content glass-panel">
+        <motion.div 
+          className="about-content glass-panel"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="about-text">
+            <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+              <img 
+                src={profilePic} 
+                alt="Praveen C" 
+                style={{ width: '100px', height: '100px', borderRadius: '50%', objectFit: 'cover', border: '3px solid var(--border-color)' }} 
+              />
+              <div>
+                <h3 style={{ color: 'var(--text-primary)', fontSize: '1.4rem', marginBottom: '0.2rem' }}>Praveen C</h3>
+                <span style={{ color: 'var(--accent-color)', fontWeight: 500 }}>Software Engineer</span>
+              </div>
+            </div>
             <p>
-              I am currently pursuing my <strong>B.E. in Computer Science Engineering</strong>. 
-              I enjoy developing web applications and continuously improving my problem-solving skills.
+              I am a <strong>Computer Science Engineering</strong> student passionate about problem solving and continuously improving my software engineering skills through projects and competitive programming.
             </p>
             <p>
-              My passion lies in full-stack development, where I love building intuitive user interfaces 
-              and robust, scalable backend systems. I am currently preparing for software engineering and 
-              campus placements, constantly learning modern technologies to stay ahead of the curve.
-            </p>
-            <p>
-              I have hands-on experience working with <strong>REST APIs, Microservices, and complex System Designs</strong>.
+              I enjoy building scalable <strong>backend systems, REST APIs</strong>, and modern <strong>full-stack web applications</strong>.
             </p>
           </div>
           
@@ -42,7 +58,7 @@ const About = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
